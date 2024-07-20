@@ -1,0 +1,16 @@
+record=[]
+for i in range(int(input())):
+    name=input()
+    score=float(input())
+    
+    record.append([name,score])
+    
+grades=sorted({i[1] for i in record})
+second_lowest_grade=grades[1]
+
+second_lowest_student=[j[0] for j in record if j[1]==second_lowest_grade]
+
+second_lowest_student.sort()
+
+for i in second_lowest_student:
+    print(i)
