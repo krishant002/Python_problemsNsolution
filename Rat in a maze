@@ -1,0 +1,38 @@
+#rat in a maze
+def safe(maze,r,c):
+    if(r<0 or r>3 or c<0 or c>3 or maze[r][c]==0):
+        return False
+    return True
+    
+def solution(maze,sol,r,c):
+    if(r==3 and c==3 and maze[r][c]==1):
+        sol[r][c]=1
+        return True
+        
+    if(safe(maze,r,c)==True):
+        sol[r][c]=1
+        if(solution(maze,sol,r,c+1)==True):
+            return True
+        if(solution(maze,sol,r+1,c)==True):
+            return True
+        sol[r][c]=0
+        return False
+    return False
+    
+    
+maze=[[1,1,1,1],
+      [1,0,0,1],
+      [1,1,0,0],
+      [0,1,1,1]]
+sol=[[0,0,0,0],
+     [0,0,0,0],
+     [0,0,0,0],
+     [0,0,0,0]]
+        
+if(solution(maze,sol,0,0)==True):
+    for i in range(4):
+        for j in range(4):
+            print(sol[i][j],end=" ")
+        print()
+else:
+    print("No path.")
