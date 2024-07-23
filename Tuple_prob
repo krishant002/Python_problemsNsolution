@@ -1,0 +1,9 @@
+# Read input values
+n = int(input())
+integer_list = list(map(int, input().split()))
+
+# Create the tuple
+t = tuple(integer_list)
+
+# Print the hash of the tuple
+print(hash(t))
