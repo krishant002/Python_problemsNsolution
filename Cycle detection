@@ -1,0 +1,20 @@
+def cycle(graph,visited,s,p,v):
+    visited[s]=True
+    for i in range(v):
+        if(graph[s][i]!=0 and visited[i]!=True):
+            if(cycle(graph,visited,i,s,v)==True):
+                return True
+            elif(i!=p):
+                return True
+    return False
+graph=[[0,1,0,0],
+        [0,0,1,0],
+        [0,0,0,1],
+        [1,0,0,0]]
+vertex=4
+start=0;prev=-1
+visited=[False]*vertex
+if(cycle(graph,visited,start,prev,vertex)==True):
+    print("Cycle dictected")
+else:
+    print("No cycles")
