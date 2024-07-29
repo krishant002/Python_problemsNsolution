@@ -1,0 +1,27 @@
+def dfs(g,v,i,c,n):
+    if(c==n):
+        return True
+    for j in range(n):
+        if(g[i][j]!=0 and v[j]!=True):
+            v[j]=True
+            if(dfs(g,v,j,c+1,n)==True):
+                return True
+            v[j]=False
+    return False
+def path(graph,visited):
+    count=1
+    n=4
+    for i in range(4):
+        visited[i]=True
+        if(dfs(graph,visited,i,count,n)==True):
+            return True
+    return False
+graph=[[0,1,0,0],
+        [0,0,1,0],
+        [0,0,0,1],
+        [1,0,0,0]]
+visited=[False]*4
+if(path(graph,visited)==True):
+    print("path exists.")
+else:
+    print("path doesn't exists")
